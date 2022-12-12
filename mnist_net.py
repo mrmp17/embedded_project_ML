@@ -27,7 +27,7 @@ def main():
 	test_images = []
 	test_labels = []
 
-	dims = (10,10) # dimensions of images to train/test with
+	dims = (20,20) # dimensions of images to train/test with
 
 	for j in range(2): # train and test	
 		for i in range(2): # 0 to 9
@@ -60,9 +60,9 @@ def main():
 	model = Sequential([
 		Flatten(input_shape=dims),		# reshape 10x10 to 100, layer 0
 		Dense(64, activation='relu', use_bias=False),	# dense layer 1
-		Dense(32, activation='relu', use_bias=False),	# dense layer 2
+		#Dense(32, activation='relu', use_bias=False),	# dense layer 2
 		Dense(16, activation='relu', use_bias=False),	# dense layer 3
-		Dense(2, activation='softmax', use_bias=False),	# dense layer 4
+		Dense(2, activation='softmax', use_bias=False),	# dense layer 3
 	])
 
 	model.compile(optimizer='adam',
