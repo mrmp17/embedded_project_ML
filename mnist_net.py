@@ -59,9 +59,10 @@ def main():
 	## Define network structure
 	model = Sequential([
 		Flatten(input_shape=dims),		# reshape 10x10 to 100, layer 0
-		Dense(32, activation='relu', use_bias=False),	# dense layer 1
-		Dense(16, activation='relu', use_bias=False),	# dense layer 2
-		Dense(2, activation='softmax', use_bias=False),	# dense layer 3
+		Dense(64, activation='relu', use_bias=False),	# dense layer 1
+		Dense(32, activation='relu', use_bias=False),	# dense layer 2
+		Dense(16, activation='relu', use_bias=False),	# dense layer 3
+		Dense(2, activation='softmax', use_bias=False),	# dense layer 4
 	])
 
 	model.compile(optimizer='adam',
