@@ -12,7 +12,18 @@ from tensorflow.keras.layers import Activation
 from sklearn.utils import shuffle
 import sys
 
+from txt_to_h import hls_weights
+
+#python3 mnist_net.py -dataset_dir /home/tjaz/final_ass/embedded_project_ML/Dataset
+
+
+
+
 def main():
+
+	p = hls_weights()
+
+
 	args = sys.argv[1:]
 	if len(args) == 2 and args[0] == '-dataset_dir':
 		dataset_dir = str(args[1])	
@@ -175,6 +186,11 @@ def main():
 	x = test_images[1]
 	x = np.expand_dims(x, axis=0)
 	print("NN Prediction: ", np.argmax(model.predict(x)))
+
+
+
+
+	done = p.txt_to_cpp()
 
 
 
