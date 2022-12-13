@@ -41,7 +41,7 @@ def main():
 	dims = (20,20) # dimensions of images to train/test with
 
 	for j in range(2): # train and test	
-		for i in range(5): # 0 to 9
+		for i in range(5): # 0 to 5
 			if j == 0:
 				read_folder = dataset_dir + '/Training/' + str(i) + '/'
 			if j == 1:
@@ -69,7 +69,7 @@ def main():
 
 	## Define network structure
 	model = Sequential([
-		Flatten(input_shape=dims),		# reshape 10x10 to 100, layer 0
+		Flatten(input_shape=dims),		# reshape 20x20 to 400, layer 0
 		Dense(64, activation='relu', use_bias=False),	# dense layer 1
 		#Dense(32, activation='relu', use_bias=False),	# dense layer 2
 		Dense(16, activation='relu', use_bias=False),	# dense layer 3
