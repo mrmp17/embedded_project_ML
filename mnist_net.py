@@ -41,7 +41,7 @@ def main():
 	dims = (20,20) # dimensions of images to train/test with
 
 	for j in range(2): # train and test	
-		for i in range(2): # 0 to 9
+		for i in range(5): # 0 to 9
 			if j == 0:
 				read_folder = dataset_dir + '/Training/' + str(i) + '/'
 			if j == 1:
@@ -73,7 +73,7 @@ def main():
 		Dense(64, activation='relu', use_bias=False),	# dense layer 1
 		#Dense(32, activation='relu', use_bias=False),	# dense layer 2
 		Dense(16, activation='relu', use_bias=False),	# dense layer 3
-		Dense(2, activation='softmax', use_bias=False),	# dense layer 3
+		Dense(5, activation='softmax', use_bias=False),	# dense layer 3
 	])
 
 	model.compile(optimizer='adam',
