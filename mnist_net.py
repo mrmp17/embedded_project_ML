@@ -70,9 +70,8 @@ def main():
 	## Define network structure
 	model = Sequential([
 		Flatten(input_shape=dims),		# reshape 20x20 to 400, layer 0
-		Dense(64, activation='relu', use_bias=False),	# dense layer 1
-		#Dense(32, activation='relu', use_bias=False),	# dense layer 2
-		Dense(16, activation='relu', use_bias=False),	# dense layer 3
+		Dense(128, activation='relu', use_bias=False),	# dense layer 1
+		Dense(64, activation='relu', use_bias=False),	# dense layer 3
 		Dense(5, activation='softmax', use_bias=False),	# dense layer 3
 	])
 
@@ -117,61 +116,8 @@ def main():
 		file.close()
 
 	network_weights = model.layers[1].weights
-	#print(network_weights)
 	layer_1_W = network_weights[0].numpy()
-	#print(layer_1_W)
 
-
-
-
-	
-	"""img_filename = "img_pixel_vals.txt" 
-	open(img_filename, 'w').close() # clear file
-	file = open(img_filename,"a") 
-	file.write('{')
-	for i in range(dims[1]):
-		for j in range(dims[0]):
-			file.write(str(test_images[0][i][j]))
-			if j != dims[1]-1:
-				file.write(', ')
-		if i != dims[0]-1:
-			file.write(', \n')
-	file.write('}')
-	file.close()"""
-
-
-	"""img_filename = "img_pixel_vals_vhdl_array.txt" 
-	open(img_filename, 'w').close() # clear file
-	file = open(img_filename,"a") 
-	file.write('(')
-	for i in range(dims[1]):
-		for j in range(dims[0]):
-			file.write('"')
-			wstr = ''.join('{:0>8b}'.format(c) for c in struct.pack('!f', test_images[0][i][j]))
-			file.write(wstr)
-			file.write('"')
-			if j != dims[1]-1:
-				file.write(', ')
-		if i != dims[0]-1:
-			file.write(', \n')
-	file.write(')')
-	file.close()"""
-
-
-	"""img_filename = "img_pixel_vals.coe" 
-	open(img_filename, 'w').close() # clear file
-	file = open(img_filename,"a") 
-	file.write('memory_initialization_radix=2;\n') # radix 2 = binary, radix 10 = decimal
-	file.write('memory_initialization_vector=\n')
-	for i in range(dims[1]):
-		for j in range(dims[0]):
-			wstr = ''.join('{:0>8b}'.format(c) for c in struct.pack('!f', test_images[0][i][j]))
-			file.write(wstr)
-			if i == dims[0]-1 and j == dims[1]-1:
-				file.write(';')
-			else:
-				file.write(',\n')
-	file.close()"""
 
 	print("test_image[0] label: ", test_labels[0])
 
@@ -187,12 +133,7 @@ def main():
 	x = np.expand_dims(x, axis=0)
 	print("NN Prediction: ", np.argmax(model.predict(x)))
 
-
-
-
 	done = p.txt_to_cpp()
-
-
 
 	print("Finished")
 	
